@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Fresita</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #ffe6e6;
+            color: #660033;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .poem {
+            font-size: 1.2em;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .interactive {
+            margin-top: 30px;
+        }
+        button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #cc0000;
+        }
+        #specialMessage {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #cc0000;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>For My Fresita</h1>
+    <div class="poem">
+        <p>Donde el tiempo se pausa en la playa,</p>
+        <p>el murmullo del mar nos envuelve y desmaya,</p>
+        <p>y la brisa, ligera, nos brinda su sabor,</p>
+        <p>mientras el sol se funde en un sueño de amor.</p>
+        <br>
+        <p>Bajo la luna, nuestros pasos se unen,</p>
+        <p>y en cada movimiento, el alma nos fluye.</p>
+        <p>El mundo se borra, solo queda el compás,</p>
+        <p>de dos corazones que laten al par.</p>
+        <br>
+        <p>Eres mi Fresita, dulce y sin igual,</p>
+        <p>una madre que brilla con luz celestial.</p>
+        <p>Tus ojos cafés, como miel en la tarde,</p>
+        <p>y tu sonrisa eterna, que en mi alma no se apague.</p>
+        <br>
+        <p>Bajo la luna, tu timidez encanta,</p>
+        <p>y en tu sonrojo, mi corazón se levanta.</p>
+        <p>Eres mi Fresita, mi luz en la oscuridad,</p>
+        <p>y en tu mirada, encuentro la eternidad.</p>
+        <br>
+        <p>Eres mi estrella, mi mayor fortuna,</p>
+        <p>el faro que guía mi noche más oscura.</p>
+        <p>Contigo, el tiempo no es más que un suspiro,</p>
+        <p>y en tus brazos, el mundo es mi respiro.</p>
+        <br>
+        <p>Y en este instante, bajo el cielo infinito,</p>
+        <p>prometo amarte con todo lo que he vivido.</p>
+        <p>Porque contigo, la vida es un verso,</p>
+        <p>y en tu mirada, encuentro el universo.</p>
+    </div>
+    <div class="interactive">
+        <button onclick="showMessage()">Click for a Special Message</button>
+        <p id="specialMessage">Eres mi todo, mi Fresita querida. 💖</p>
+    </div>
+
+    <script>
+        function showMessage() {
+            document.getElementById('specialMessage').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
