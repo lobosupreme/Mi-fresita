@@ -7,17 +7,20 @@
     <style>
         body {
             font-family: 'Georgia', serif;
-            background-color: #ffe6e6;
+            background: linear-gradient(to bottom, #ffe6e6, #ffcccc);
             color: #660033;
             text-align: center;
             padding: 20px;
             margin: 0;
+            animation: fadeBackground 5s infinite alternate;
         }
+
         h1 {
             font-size: 2em;
             margin-bottom: 15px;
             animation: fadeIn 2s ease-in-out;
         }
+
         .poem {
             font-size: 1em;
             line-height: 1.6;
@@ -30,10 +33,12 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             animation: fadeIn 3s ease-in-out;
         }
+
         .interactive {
             margin-top: 20px;
             animation: fadeIn 4s ease-in-out;
         }
+
         button {
             background-color: #ff4d4d;
             color: white;
@@ -42,18 +47,33 @@
             font-size: 1em;
             cursor: pointer;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
+
         button:hover {
             background-color: #cc0000;
         }
+
+        button:active {
+            transform: scale(1.1);
+        }
+
         #specialMessage {
             display: none;
             margin-top: 15px;
-            font-size: 1.1em;
+            font-size: 1.2em;
             color: #cc0000;
             font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.5);
             animation: heartbeat 1.5s infinite;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: #ff4d4d;
+            opacity: 1;
+            animation: floatHeart 3s ease-in-out forwards;
         }
 
         /* Animations */
@@ -69,14 +89,27 @@
         }
 
         @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeBackground {
+            from { background: linear-gradient(to bottom, #ffe6e6, #ffcccc); }
+            to { background: linear-gradient(to bottom, #ffcccc, #ffe6e6); }
+        }
+
+        @keyframes floatHeart {
             0% {
-                transform: scale(1);
+                transform: translateY(0) scale(1);
+                opacity: 1;
             }
             50% {
-                transform: scale(1.1);
+                transform: translateY(-50px) scale(1.2);
             }
             100% {
-                transform: scale(1);
+                transform: translateY(-100px) scale(0.8);
+                opacity: 0;
             }
         }
 
@@ -138,11 +171,31 @@
     </div>
 
     <script>
-        // Function to show the special message
         function showMessage() {
             const message = document.getElementById('specialMessage');
             message.style.display = 'block';
-            message.style.animation = 'heartbeat 1.5s infinite'; // Ensure animation runs
+            message.style.animation = 'heartbeat 1.5s infinite';
+
+            for (let i = 0; i < 10; i++) {
+                createHeart();
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            document.body.appendChild(heart);
+
+            const x = Math.random() * window.innerWidth;
+            const y = window.innerHeight - 50;
+
+            heart.style.left = `${x}px`;
+            heart.style.top = `${y}px`;
+
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
         }
     </script>
 </body>
