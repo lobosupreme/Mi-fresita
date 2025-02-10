@@ -70,12 +70,16 @@
             animation: heartbeat 1.5s infinite;
         }
 
-        .heart {
-            position: absolute;
-            font-size: 24px;
-            color: #ff4d4d;
-            opacity: 1;
-            animation: floatHeart 3s ease-in-out forwards;
+        /* Music Controls */
+        .music-container {
+            margin-top: 20px;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 300px;
+            height: 150px;
+            border-radius: 10px;
         }
 
         /* Animations */
@@ -94,45 +98,19 @@
             to { background: linear-gradient(to bottom, #ffcccc, #ffe6e6); }
         }
 
-        @keyframes floatHeart {
-            0% {
-                transform: translateY(0) scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: translateY(-50px) scale(1.2);
-            }
-            100% {
-                transform: translateY(-100px) scale(0.8);
-                opacity: 0;
-            }
-        }
-
         /* Mobile-specific adjustments */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8em;
-            }
-            .poem {
-                font-size: 1em;
-                padding: 12px;
-                line-height: 1.6;
-            }
-            button {
-                font-size: 1.1em;
-                padding: 12px;
-            }
-            #specialMessage {
-                font-size: 1.2em;
-            }
-            .heart {
-                font-size: 18px;
-            }
+            h1 { font-size: 1.8em; }
+            .poem { font-size: 1em; padding: 12px; line-height: 1.6; }
+            button { font-size: 1.1em; padding: 12px; }
+            #specialMessage { font-size: 1.2em; }
+            iframe { height: 120px; }
         }
     </style>
 </head>
 <body>
     <h1>For My Fresita</h1>
+    
     <div class="poem">
         <p>Donde el tiempo se pausa en la playa,</p>
         <p>el murmullo del mar nos envuelve y desmaya,</p>
@@ -164,9 +142,19 @@
         <p>Porque contigo, la vida es un verso,</p>
         <p>y en tu mirada, encuentro el universo.</p>
     </div>
+
     <div class="interactive">
         <button onclick="showMessage()">Click for a Special Message</button>
         <p id="specialMessage">Eres mi todo, mi Fresita querida. 💖</p>
+    </div>
+
+    <div class="music-container">
+        <p>🎶 Play some romantic music 🎶</p>
+        <iframe 
+            src="https://www.youtube.com/embed/X1hxXrs3534?autoplay=1&loop=1&playlist=X1hxXrs3534&controls=1"
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+        </iframe>
     </div>
 
     <script>
@@ -174,27 +162,6 @@
             const message = document.getElementById('specialMessage');
             message.style.display = 'block';
             message.style.animation = 'heartbeat 1.5s infinite';
-
-            for (let i = 0; i < 10; i++) {
-                createHeart();
-            }
-        }
-
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.innerHTML = '❤️';
-            heart.classList.add('heart');
-            document.body.appendChild(heart);
-
-            const x = Math.random() * window.innerWidth;
-            const y = window.innerHeight - 50;
-
-            heart.style.left = `${x}px`;
-            heart.style.top = `${y}px`;
-
-            setTimeout(() => {
-                heart.remove();
-            }, 3000);
         }
     </script>
 </body>
